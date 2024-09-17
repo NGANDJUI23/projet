@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title> ACCUEILL </ion-title>
+    <ion-title> GESTION DES NOTES </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -46,17 +46,17 @@
   <ion-list>
     <ion-grid fixed>
       <ion-row>
-        @for (etudiant of listFiveFirst; track $index) {
-          <ion-col size="12" size-sm="12" size-md="6" size-xl="4">
-            <ion-item>
-              <ion-label>
-                <h3>{{etudiant.nom}}</h3>
-                <p>{{etudiant.prenom}}</p>
-                <p>{{etudiant.classe}}</p>
-                <p>{{etudiant.moyenne}}</p>
-              </ion-label>
-            </ion-item>
-          </ion-col>
+        @for (etudiant of listEtudiant; track $index) {
+        <ion-col size="12" size-sm="12" size-md="6" size-xl="4">
+          <ion-item>
+            <ion-label>
+              <h3>{{etudiant.nom}}</h3>
+              <p>{{etudiant.prenom}}</p>
+              <p>{{etudiant.classe}}</p>
+              <p>{{etudiant.moyenne}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-col>
         }
       </ion-row>
     </ion-grid>

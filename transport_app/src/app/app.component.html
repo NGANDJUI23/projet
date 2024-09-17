@@ -1,3 +1,37 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" menuId="" type="overlay">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Mon appli</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-menu-toggle auto-hide="false">
+          <ion-item [routerLink]="['/home']">
+            <ion-label>Accueil</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle auto-hide="false">
+          <ion-item [routerLink]="['/note']">
+            <ion-label>detail notes</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle auto-hide="false">
+          <ion-item [routerLink]="['/etudiant']">
+            <ion-label>detail etudiant</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle auto-hide="false">
+          <ion-item [routerLink]="['/propos']">
+            <ion-label>A propos</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-content>
+
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+
 </ion-app>

@@ -1,16 +1,19 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonFooter, IonButton, AlertController, IonCard, IonCardSubtitle, IonCardHeader, IonCardTitle, IonCardContent, IonList, IonLabel, IonItem, IonAvatar, IonBadge, IonGrid, IonRow, IonCol } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonFooter, IonButton, AlertController, IonCard, IonCardSubtitle, IonCardHeader, IonCardTitle, IonCardContent, IonList, IonLabel, IonItem, IonAvatar, IonBadge, IonGrid, IonRow, IonCol, IonButtons } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
+import { IonMenuButton } from '@ionic/angular/standalone';
+import { GestionEtudiantService } from '../services_etudiant/gestion-etudiant.service';
+import { Etudiant } from '../model/etudiantModel';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonCol, IonRow, IonGrid, IonBadge, IonAvatar, IonItem, IonLabel, IonList, IonCardContent, IonCardTitle, IonCardHeader, IonCardSubtitle, IonCard, IonButton, IonFooter, IonHeader, IonToolbar, IonTitle, IonContent],
+  imports: [IonButtons, IonMenuButton, IonCol, IonRow, IonGrid, IonBadge, IonAvatar, IonItem, IonLabel, IonList, IonCardContent, IonCardTitle, IonCardHeader, IonCardSubtitle, IonCard, IonButton, IonFooter, IonHeader, IonToolbar, IonTitle, IonContent],
 })
 export class HomePage {
 
-  constructor(private alertcontrl: AlertController) {
+  constructor(private alertcontrl: AlertController, private etudiantServ: GestionEtudiantService) {
   }
   async onDialog() {
     const alert = await this.alertcontrl.create(
@@ -38,57 +41,7 @@ export class HomePage {
 
     await alert.present();
   }
-  tabEtudiant = [
-    {
-      nom: "NGANDJUI",
-      prenom: "Ivan",
-      classe: "ISI 4"
-    },
-    {
-      nom: "NGUEMNIN",
-      prenom: "Alex",
-      classe: "ISI 4"
-    },
-    {
-      nom: "LAIKI",
-      prenom: "Palai",
-      classe: "ISI 4"
-    },
-    {
-      nom: "BAFA'A",
-      prenom: "Cedrick",
-      classe: "ISI 4"
-    },
-    {
-      nom: "NEUGANG",
-      prenom: "Jordan",
-      classe: "ISI 4"
-    },
-    {
-      nom: "WANDJA",
-      prenom: "Romeo",
-      classe: "ISI 4"
-    },
-    {
-      nom: "MANEKOU",
-      prenom: "LILA",
-      classe: "ISI 4"
-    },
-    {
-      nom: "DIKONGUE",
-      prenom: "Styve",
-      classe: "ISI 4"
-    },
-    {
-      nom: "MANGA",
-      prenom: "John",
-      classe: "ISI 4"
-    },
-    {
-      nom: "MABOAN",
-      prenom: "Alex",
-      classe: "ISI 4"
-    },
+  listEtudiant: Etudiant[] = this.etudiantServ.afficheAll();
+  listFiveFirst: Etudiant[] = this.etudiantServ.fiveFirst();
 
-  ]
 }
